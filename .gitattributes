@@ -1,2 +1,6 @@
 *.pynb linguist-detectable=false
+<<<<<<< HEAD
 *.html linguist-detectable=false
+=======
+*.html linguist-detectable=false
+>>>>>>> 02434dde205deee99cca609cd3851e68e21bac52

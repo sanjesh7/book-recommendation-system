@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender System</title>
+    <style>
+       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-text-color: #183b56;
+    --secondary-text-color: #577592;
+    --accent-color: #2294ed;
+    --accent-color-dark: #1d69a3;
+    --background-color:#ffffff;
+    --hover:#f9fdff;
+    --background-color-nav:#FFEEF4;
+}
+.dark{
+    --primary-text-color: #ffffff;
+    --secondary-text-color: #598b9e;
+    --accent-color: #2294ed;
+    --accent-color-dark: #1d69a3;
+    --background-color:#111;
+    --hover:#150e0e;
+    --background-color-nav:#111;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    color: var(--primary-text-color);
+
+    background-color: var(--background-color);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='1' y2='0' gradientTransform='rotate(138,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%230FF'/%3E%3Cstop offset='1' stop-color='%23CF6'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(152,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23F00'/%3E%3Cstop offset='1' stop-color='%23FC0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23FFF' fill-opacity='0' stroke-miterlimit='10'%3E%3Cg stroke='url(%23a)' stroke-width='12.209999999999999'%3E%3Cpath d='M1409 581 1450.35 511 1490 581z'/%3E%3Ccircle stroke-width='4.07' transform='' cx='500' cy='100' r='40'/%3E%3Cpath transform='' d='M400.86 735.5h-83.73c0-23.12 18.74-41.87 41.87-41.87S400.86 712.38 400.86 735.5z'/%3E%3C/g%3E%3Cg stroke='url(%23b)' stroke-width='3.7'%3E%3Cpath transform='' d='M149.8 345.2 118.4 389.8 149.8 434.4 181.2 389.8z'/%3E%3Crect stroke-width='8.14' transform='' x='1039' y='709' width='100' height='100'/%3E%3Cpath transform='' d='M1426.8 132.4 1405.7 168.8 1363.7 168.8 1342.7 132.4 1363.7 96 1405.7 96z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
+a{
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    color: var(--primary-text-color);
+    line-height: 1.4rem;
+    margin-left: 1.8vw;
+}
+ul{
+    list-style: none;
+}
+li a{
+    color: var(--primary-text-color);
+}
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1150px;
+    margin-inline: auto;
+    overflow: visible;
+}
+nav {
+    background-color: var(--background-color-nav);
+    box-shadow: 0 0 4px #bbd0e2;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    left: 0;
+    right: 0;
+}
+
+.main-nav {
+    justify-content: space-between;
+    padding-block: 8px;
+}
+
+
+.company-logo img {
+    width: 5vw;
+}
+
+.nav-links ul {
+    gap: 16px;
+}
+
+.hover-link {
+    cursor: pointer;
+}
+
+.hover-link:hover {
+    color: var(--secondary-text-color);
+}
+
+.hover-link:active {
+    color: red;
+}
+
+.nav-item.active{
+    color: var(--accent-color);
+}
+main{
+    padding-block: 20px;
+    margin-top: 120px;
+}
+.cards-container{
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    align-items: start;
+}
+.card{
+    width: 300px;
+    min-height: 355px;
+    box-shadow: 0px 0px 4px #7ea2c0;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--background-color);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.card:hover{
+    box-shadow: 1px 1px 10px var(--accent-color);
+    background-color: var(--background-color);
+    transform: translateY(-2.5px);
+}
+.card-header img{
+    width: 100%;
+    height: 260px;
+    object-fit: fill;
+}
+.card-content{
+    padding: 12px;
+}
+.book-name{
+  margin-block: 10px;
+}
+.author{
+    margin-block: 10px;
+    color: var(--accent-color-dark);
+}
+.votes{
+    margin-block: 10px;
+}
+.ratings{
+    margin-block: 10px;
+}
+.margin{
+    margin-left: 10px;
+    width: 41px;
+    cursor: pointer;
+}
+h2{
+  margin:8px;
+}
+.company-logo h2{
+    color: var(--primary-text-color);
+}
+main h1{
+margin-bottom:5px;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="main-nav container flex">
+            <div class="flex">
+            <a href="#" class="company-logo g flex">
+                <img src="https://www.freeiconspng.com/thumbs/book-icon/open-book-icon-free-books-and-education-13.png" alt="company logo" id="logoimg">
+                <h2>Book Quest</h2>
+            </a>
+        </div>
+            <div class="nav-links">
+                <ul class="flex">
+                    <li class="hover-link nav-item" ><a href="/">Home</a></li>
+                    <li class="hover-link nav-item" ><a href="/recommend">Reccomend</a></li>
+                    <li class="hover-link nav-item" ><a href="/about">About Us</a></li>
+                </ul>
+            </div>
+               <img src="https://static.thenounproject.com/png/2712425-200.png" id="change-color" class="margin g" >
+        </div>
+    </nav>
+
+    <main class="container">
+          <h1>Top 50 Books:</h1>
+        <div class="cards-container container flex">
+            {% for i in range(book_name|length) %}
+            <div class="card">
+                <div class="card-header">
+                    <img src="{{ image[i] }}" alt="book-image">
+                </div>
+                <div class="card-content">
+                    <h4 class="book-name">{{ book_name[i] }}</h4>
+                    <h5 class="author">{{ author[i] }}</h5>
+                    <h5 class="votes">Votes - {{ votes[i] }}</h5>
+                    <h5 class="ratings">Rating - {{ rating[i] }}</h5>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+<script>
+var val=0;
+document.getElementById("change-color").addEventListener("click",()=>{
+    document.querySelector("body").classList.toggle("dark");
+    document.querySelector("nav").classList.toggle("dark");
+    if(val==0){
+    document.getElementById("change-color").src="https://cdn4.iconfinder.com/data/icons/multimedia-flat-30px/30/sun_light_mode_day-512.png";
+    val=1;
+    }
+    else{
+        document.getElementById("change-color").src="https://static.thenounproject.com/png/2712425-200.png";
+        val=0;
+    }
+})
+    </script>
+</body>
+</html>

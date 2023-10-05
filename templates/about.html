@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender System</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@500&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-text-color: #183b56;
+    --secondary-text-color: #577592;
+    --accent-color: #2294ed;
+    --accent-color-dark: #1d69a3;
+    --background-color:#ffffff;
+    --hover:#f9fdff;
+    --background-color-nav:#FFEEF4;
+}
+.dark{
+    --primary-text-color: #ffffff;
+    --secondary-text-color: #598b9e;
+    --accent-color: #2294ed;
+    --accent-color-dark: #1d69a3;
+    --background-color:#111;
+    --hover:#150e0e;
+    --background-color-nav:#111;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    color: var(--primary-text-color);
+
+    background-color: var(--background-color);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='1' y2='0' gradientTransform='rotate(138,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%230FF'/%3E%3Cstop offset='1' stop-color='%23CF6'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(152,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23F00'/%3E%3Cstop offset='1' stop-color='%23FC0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23FFF' fill-opacity='0' stroke-miterlimit='10'%3E%3Cg stroke='url(%23a)' stroke-width='12.209999999999999'%3E%3Cpath d='M1409 581 1450.35 511 1490 581z'/%3E%3Ccircle stroke-width='4.07' transform='' cx='500' cy='100' r='40'/%3E%3Cpath transform='' d='M400.86 735.5h-83.73c0-23.12 18.74-41.87 41.87-41.87S400.86 712.38 400.86 735.5z'/%3E%3C/g%3E%3Cg stroke='url(%23b)' stroke-width='3.7'%3E%3Cpath transform='' d='M149.8 345.2 118.4 389.8 149.8 434.4 181.2 389.8z'/%3E%3Crect stroke-width='8.14' transform='' x='1039' y='709' width='100' height='100'/%3E%3Cpath transform='' d='M1426.8 132.4 1405.7 168.8 1363.7 168.8 1342.7 132.4 1363.7 96 1405.7 96z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
+a{
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    color: var(--primary-text-color);
+    line-height: 1.4rem;
+    margin-left: 1.8vw;
+}
+ul{
+    list-style: none;
+}
+li a{
+    color: var(--primary-text-color);
+}
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1150px;
+    margin-inline: auto;
+    overflow: visible;
+}
+nav {
+    background-color: var(--background-color-nav);
+    box-shadow: 0 0 4px #bbd0e2;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    left: 0;
+    right: 0;
+}
+
+.main-nav {
+    justify-content: space-between;
+    padding-block: 8px;
+}
+
+
+.company-logo img {
+    width: 5vw;
+}
+
+.nav-links ul {
+    gap: 16px;
+}
+
+.hover-link {
+    cursor: pointer;
+}
+
+.hover-link:hover {
+    color: var(--secondary-text-color);
+}
+
+.hover-link:active {
+    color: red;
+}
+
+.nav-item.active{
+    color: var(--accent-color);
+}
+main{
+    padding-block: 20px;
+    margin-top: 120px;
+}
+.margin{
+    margin-left: 10px;
+    width: 41px;
+    cursor: pointer;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    flex-wrap: wrap;
+}
+.box-content{
+    padding: 8px;
+    box-shadow: 0px 0px 4px #7ea2c0;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--background-color);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.box-content:hover{
+    box-shadow: 1px 1px 10px var(--accent-color);
+    background-color: var(--background-color);
+    transform: translateY(-2.5px);
+}
+h2{
+    margin: 8px;
+}
+.company-logo h2{
+    color: var(--primary-text-color);
+}
+.para{
+   margin: 8px;
+    line-height: 2;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+.box-content1{
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    box-shadow: 0px 0px 4px #7ea2c0;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--background-color);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+.box-content1:hover{
+    box-shadow: 1px 1px 10px var(--accent-color);
+    background-color: var(--background-color);
+    transform: translateY(-2.5px);
+}
+  </style>
+</head>
+<body>
+    <nav>
+        <div class="main-nav container flex">
+            <div class="flex">
+            <a href="/" class="company-logo g flex">
+                <img src="https://www.freeiconspng.com/thumbs/book-icon/open-book-icon-free-books-and-education-13.png" alt="company logo" id="logoimg">
+                <h2>Book Quest</h2>
+            </a>
+            </div>
+            <div class="nav-links">
+                <ul class="flex">
+                    <li class="hover-link nav-item" ><a href="/">Home</a></li>
+                    <li class="hover-link nav-item" ><a href="/recommend">Reccommend</a></li>
+                    <li class="hover-link nav-item" ><a href="/about">About Us</a></li>
+                </ul>
+            </div>
+            <img src="https://static.thenounproject.com/png/2712425-200.png" id="change-color" class="margin g" >
+        </div>
+    </nav>
+    <main class="container">
+        <div class="box">
+            <h1>About Us</h1>
+            <div class="box-content">
+                <h2>General view of Recommender Systems:</h2>
+                <p class="para">In the ever-evolving  landscape of  online  services,  recommender  systems have emerged as a  pivotal component of our daily digital experiences. From the personalized video recommendations on YouTube to the product suggestions  on   Amazon and the movie picks on Netflix, recommender systems have become an integral part of our online journeys. These systems are designed to employ Advanced algorithms to suggest relevant items to users, which can encompass a wide range of content, including movies, books, articles, products, and more. In the context of our project, we have focused on book recommendations.</p>
+            </div>
+            <div class="box-content">
+                <h2>Data Set Used:(Kaggle)</h2>
+                <p class="para">
+                    Our book recommender system leverages a rich dataset, which comprises three main components: Users, Books, and Ratings. The Users section contains  user IDs, each mapped to unique integers, along with  data such as name and age . For books, they are identified by their respective ISBNs, and any invalid ISBNs have already been meticulously removed from the dataset. Furthermore, we have enriched the book data with content-based information like Book Title, Book Author, Year of Publication, and Publisher, all sourced from Amazon Web Services. When multiple authors are associated with a book, only the primary author is provided.
+                </p>
+            </div>
+            <div class="box-content">
+                <h2>Algorithm Used:</h2>
+                <p class="para">
+                    Speaking of recommendation algorithms, our system employs two primary approaches: collaborative filtering and popularity-based filtering. Popularity-based filtering plays a prominent role in our system's homepage, where we display a curated list of the top 50 books. This list is generated based on the popularity and overall rating of the books, ensuring that users are greeted with a selection of books that have garnered significant attention and acclaim from our community.
+                </p>
+                <p class="para">Collaborative filtering, on the other hand, forms the core of our personalized book recommendation engine. Using the concept of cosine similarity, we analyze user behavior and preferences to provide tailored book recommendations. By identifying users with similar reading tastes and drawing from their interactions with books, we offer a dynamic and personalized reading list to each user. This collaborative approach ensures that users are introduced to books that align with their individual interests and reading history, enhancing their overall book discovery experience.</p>
+            </div>
+        </div>
+    </main>
+    <div class="box-content1 container">
+        <div class="imgsize">
+        <img src="https://i.ibb.co/Ws0X56z/collimg.png" alt="">
+        </div>
+        <div>
+        <p class="para">Collaborative filtering is like having two friends, Person 1 and Person 2, who share similar tastes in movies. Imagine they both watched a movie called "Movie A" and enjoyed it. Now, Person 1 goes on to watch a new movie called "Movie B" and really likes it.</p>
+        <p class="para">Collaborative filtering works by recognizing that since Person 1 and Person 2 liked the same movie ("Movie A") in the past, there's a good chance that they have similar preferences. So, when Person 1 enjoys "Movie B," the algorithm recommends it to Person 2 as well. It's like saying, "Hey, you and your friend both liked 'Movie A,' and now your friend loved 'Movie B,' so you might enjoy it too!"</p>
+        <p class="para">In simple terms, collaborative filtering uses the shared interests and past behavior of users to suggest new things they might like. It's like getting movie recommendations from a friend who has similar taste in films.</p>
+    </div>
+    </div>
+    <script>
+        var val=0;
+document.getElementById("change-color").addEventListener("click",()=>{
+    document.querySelector("body").classList.toggle("dark");
+    document.querySelector("nav").classList.toggle("dark");
+    if(val==0){
+    document.getElementById("change-color").src="https://cdn4.iconfinder.com/data/icons/multimedia-flat-30px/30/sun_light_mode_day-512.png";
+    val=1;
+    }
+    else{
+        document.getElementById("change-color").src="https://static.thenounproject.com/png/2712425-200.png";
+        val=0;
+    }
+})
+    </script>
+</body>
+</html>
